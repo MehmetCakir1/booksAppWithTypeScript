@@ -15,14 +15,22 @@ const Detail = () => {
       dispatch(getSingleBook(id))
   }, [])
 
-  
+
   return (
     <div>
       {
         loading ? (
           <h1>Loading...</h1>
         ):(
-          {book?.volumeInfo?.title}
+          <div>
+            <h1 className='uppercase font-semibold text-2xl text-center p-3'> {book?.volumeInfo?.title}</h1>
+            <img src={book?.volumeInfo.imageLinks.smallThumbnail} alt={book?.volumeInfo.title} 
+            className="w-[250px] h-auto"
+            />
+            <p>{book?.volumeInfo.description}</p>
+          </div>
+          
+          // <h1>mer</h1>
         )
       }
     </div>

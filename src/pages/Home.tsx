@@ -6,13 +6,13 @@ import { Item } from '../types/interfaces'
 
 const Home = () => {
   const dispatch=useAppDispatch()
-  const [book,setBook]=useState("crimeandpunishment")
+  const [bookName,setBookName]=useState<string>("crimeandpunishment")
 
   const {books,loading}=useAppSelector(state=>state.books)
 
 
   useEffect(() => {
-    dispatch(getBooks(book))
+    dispatch(getBooks(bookName))
   }, [])
   
 // console.log("books",books);

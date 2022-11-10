@@ -1,21 +1,13 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { IState,RootObject } from "../types/interfaces"
+import { IState,Item,RootObject } from "../types/interfaces"
 
 
 const initialState: IState = {
     books: [],
     loading: false,
     error:"",
-    book:{
-      kind: "",
-      id: "",
-      etag: "",
-      selfLink: "",
-      volumeInfo: {},
-      saleInfo: {},
-      accessInfo: {},
-    },
+    book:<Item>{},
   }
 
 export const getBooks = createAsyncThunk(
