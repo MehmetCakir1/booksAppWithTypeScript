@@ -10,7 +10,7 @@ const Detail = () => {
   const dispatch=useAppDispatch()
 
   const {book,loading}=useAppSelector(state=>state.books)
-
+console.log(book)
   useEffect(() => {
       dispatch(getSingleBook(id))
   }, [])
@@ -23,7 +23,7 @@ const Detail = () => {
         ):(
           <div>
             <h1 className='uppercase font-bold text-2xl text-center pt-10 pb-4'> {book?.volumeInfo?.title}</h1>
-            <img src={book?.volumeInfo?.imageLinks?.smallThumbnail} alt={book?.volumeInfo?.title} 
+            <img src={book?.volumeInfo?.imageLinks?.smallThumbnail ? book?.volumeInfo?.imageLinks?.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"} alt={book?.volumeInfo?.title} 
             className="w-[300px] h-[400px] block m-auto"
             />
             <p className='py-3 px-1'>{book?.volumeInfo?.description ? book?.volumeInfo?.description : "There is no information about book"}</p>

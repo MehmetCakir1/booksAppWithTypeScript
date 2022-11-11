@@ -1,8 +1,6 @@
-import {useState,useEffect} from 'react'
 import { useAppSelector } from '../app/hooks'
 import SearchForm from '../components/SearchForm'
 import SingleBook from '../components/SingleBook'
-import { Item } from '../types/interfaces'
 
 const Home = () => {
   const {books,loading}=useAppSelector(state=>state.books)

@@ -8,7 +8,7 @@ const navigate=useNavigate()
     <div className="w-[200px] flex flex-col justify-center items-center cursor-pointer"
     onClick={()=>navigate(`/detail/${id}`)}
     >
-       <img src={volumeInfo.imageLinks?.thumbnail} alt={volumeInfo.title} className="w-[150px] h-[200px]" /> 
+       <img src={volumeInfo.imageLinks?.thumbnail ? book?.volumeInfo?.imageLinks?.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"} alt={volumeInfo.title} className="w-[150px] h-[200px]" /> 
        <p className=" p-2 truncate w-full text-center">{volumeInfo.title}</p>
     </div>
   )

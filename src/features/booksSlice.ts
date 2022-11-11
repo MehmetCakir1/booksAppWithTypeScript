@@ -11,8 +11,8 @@ const initialState: IState = {
   }
 
 export const getBooks = createAsyncThunk(
-    'books/getBooks', async (book:string) => {
-        return fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=20`)
+    'books/getBooks', async ({book,index}:{book:string,index:number})=> {
+        return fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=20&startIndex=${index}`)
             .then(res => {
                 return res.json()
             })
