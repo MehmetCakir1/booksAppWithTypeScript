@@ -14,7 +14,7 @@ const Home = () => {
       loading ? (
         <h1 className='text-2xl text-center font-semibold py-5'>LOADING...</h1>
         ):(
-            books.map((book)=>{
+            books?.map((book)=>{
           return(
             <SingleBook key={book.id} book={book}/>
           )
@@ -22,6 +22,8 @@ const Home = () => {
       )
     }
     </div>
+    <button>PREVIOUS</button>
+    <button>NEXT</button>
     </>
 
   )

@@ -4,13 +4,13 @@ import { getBooks } from '../features/booksSlice'
 
 const SearchForm = () => {
     const [bookName,setBookName]=useState<string>("")
-    const [index,setIndex]=useState<number>(0)
+    const [index]=useState<number>(0)
     const dispatch=useAppDispatch()
 
     const handleSearch=(e:any)=>{
         e.preventDefault()
         if(bookName){
-          dispatch(getBooks(bookName,index))
+          dispatch(getBooks({bookName,index}))
         }
         setBookName("")
     }
