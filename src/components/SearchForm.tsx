@@ -2,14 +2,15 @@ import {useState,useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getBooks } from '../features/booksSlice'
 
-const SearchForm = () => {
-    const [bookName,setBookName]=useState<string>("")
+const SearchForm = ({bookName,setBookName}:any) => {
+    
     const { offset } = useAppSelector((state) => state.books);
     const dispatch=useAppDispatch()
+    
 // eslint-disable-next-line
-useEffect(() => {
-  dispatch(getBooks({bookName,offset}))
-}, [offset])
+// useEffect(() => {
+//   dispatch(getBooks({bookName,offset}))
+// }, [offset])
 
 
     const handleSearch=(e:any)=>{
@@ -19,8 +20,9 @@ useEffect(() => {
         }
         // setBookName("")
     }
+
   return (
-    <form 
+    <form   
     className='max-w-[40rem] m-auto text-center p-10'
     onSubmit={handleSearch}>
         <input 
