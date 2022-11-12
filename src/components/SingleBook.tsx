@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { Item } from "../types/interfaces"
 
 const SingleBook = ({book}:any) => {
 const {id,volumeInfo,title}=book;

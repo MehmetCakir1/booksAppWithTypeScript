@@ -10,7 +10,7 @@ const Detail = () => {
   const dispatch=useAppDispatch()
 
   const {book,loading}=useAppSelector(state=>state.books)
-console.log(book)
+
   useEffect(() => {
       dispatch(getSingleBook(id))
   }, [])

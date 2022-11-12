@@ -1,18 +1,23 @@
-import {useState} from 'react'
-import { useAppDispatch } from '../app/hooks'
+import {useState,useEffect} from 'react'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getBooks } from '../features/booksSlice'
 
 const SearchForm = () => {
     const [bookName,setBookName]=useState<string>("")
-    const [index]=useState<number>(0)
+    const { offset } = useAppSelector((state) => state.books);
     const dispatch=useAppDispatch()
+// eslint-disable-next-line
+useEffect(() => {
+  dispatch(getBooks({bookName,offset}))
+}, [offset])
+
 
     const handleSearch=(e:any)=>{
         e.preventDefault()
         if(bookName){
-          dispatch(getBooks({bookName,index}))
+          dispatch(getBooks({bookName,offset}))
         }
-        setBookName("")
+        // setBookName("")
     }
   return (
     <form 

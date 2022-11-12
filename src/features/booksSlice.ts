@@ -8,11 +8,12 @@ const initialState: IState = {
     loading: false,
     error:"",
     book:<Item>{},
+    offset:0
   }
 
 export const getBooks = createAsyncThunk(
-    'books/getBooks', async ({bookName,index}:{bookName:string,index:number})=>{
-        return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=20&startIndex=${index}`)
+    'books/getBooks', async ({bookName,offset}:{bookName:string,offset:number})=>{
+        return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=20&startIndex=${offset}`)
             .then(res => {
                 return res.json()
             })
@@ -31,6 +32,14 @@ const booksSlice = createSlice({
     name:"books",
     initialState,
     reducers:{
+      next:(state,action : PayloadAction<number>)=>{
+            state.offset+=20
+    },
+    previous:(state,action : PayloadAction<number>)=>{
+        if(state.offset>0){
+            state.offset-=20
+        }
+    },
 
     },
     extraReducers(builder:any){
@@ -43,6 +52,7 @@ const booksSlice = createSlice({
         })
         builder.addCase(getBooks.rejected,(state:IState)=>{
           state.loading=true;
+          state.error="Something went wrong"
         })
         builder.addCase(getSingleBook.pending,(state:IState)=>{
           state.loading=true;
@@ -53,8 +63,11 @@ const booksSlice = createSlice({
         })
         builder.addCase(getSingleBook.rejected,(state:IState)=>{
           state.loading=true;
+          state.error="Something went wrong"
         })
     }
 })
+
+export const {next,previous}=booksSlice.actions
 
 export default booksSlice.reducer

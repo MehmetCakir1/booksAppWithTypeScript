@@ -4,6 +4,7 @@ export interface IState{
     loading:boolean,
     error:string,
     book: Item,
+    offset:number,
 }
 
     export interface IndustryIdentifier {
