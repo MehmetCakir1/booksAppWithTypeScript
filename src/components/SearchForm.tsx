@@ -7,10 +7,7 @@ const SearchForm = ({bookName,setBookName}:any) => {
     const { offset } = useAppSelector((state) => state.books);
     const dispatch=useAppDispatch()
     
-// eslint-disable-next-line
-// useEffect(() => {
-//   dispatch(getBooks({bookName,offset}))
-// }, [offset])
+
 
 
     const handleSearch=(e:any)=>{

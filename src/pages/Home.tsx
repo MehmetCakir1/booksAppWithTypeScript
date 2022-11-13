@@ -9,9 +9,16 @@ const Home = () => {
   const [bookName,setBookName]=useState<string>("")
   const dispatch=useAppDispatch()
 
-// useEffect(() => {
-//   dispatch(getBooks({bookName,offset}))
-// }, [offset])
+
+  const handleSearch=(e:any)=>{
+    e.preventDefault()
+    dispatch(next(offset))
+    if(bookName){
+      dispatch(getBooks({bookName,offset}))
+    }
+    // setBookName("")
+}
+console.log(offset)
 
 
 
@@ -42,7 +49,7 @@ const Home = () => {
           onClick={()=>dispatch(previous(offset))}
           >PREVIOUS</button>
           <button className="bg-purple-500 w-[7rem] py-1"
-          onClick={()=>dispatch(next(offset))}
+          onClick={handleSearch}
           >NEXT</button>
         </div>
         )
